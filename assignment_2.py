@@ -33,6 +33,9 @@ def tbn_revenue(date_price, n):
 
 
 def create_csv_file(data, n, key):
+    """
+    Create CSV file with date and price.
+    """
     key_data = []
     idx = 0
 
@@ -63,6 +66,9 @@ def create_csv_file(data, n, key):
 
 
 def main():
+    """
+    main().
+    """
     filepath = os.path.abspath("task_1.csv")
     data = load_csv(filepath)
 
