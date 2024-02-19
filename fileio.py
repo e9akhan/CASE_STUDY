@@ -27,7 +27,7 @@ def calculate_avg(data, key):
     """
     Calculate Avg.
     """
-    return sum(float(entry[key]) for entry in data) / len(data)
+    return sum(float(entry[key]) for entry in data) / len(data) if data else 0
 
 
 def create_task_1(data1, data2):
