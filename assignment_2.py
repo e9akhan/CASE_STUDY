@@ -21,13 +21,10 @@ def tbn_revenue(date_price, n):
     """
     Find TBn revenue.
     """
-    date_price = sorted(date_price, key=lambda x: x[1], reverse=True)
+    date_price = sorted(date_price, key=lambda x: float(x[1]), reverse=True)
 
     top_n_sum = sum(float(x[1]) for x in date_price[:n])
-
     bottom_n_sum = sum(float(x[1]) for x in date_price[-n:])
-
-    print(top_n_sum, bottom_n_sum)
 
     return top_n_sum - bottom_n_sum
 
