@@ -55,7 +55,7 @@ def modified_tbn_revenue(date_price, n):
 
         result += largest - smallest
 
-        if result:
+        if largest != smallest:
             prices.remove(smallest)
             prices.remove(largest)
         else:
