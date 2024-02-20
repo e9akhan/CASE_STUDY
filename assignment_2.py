@@ -55,8 +55,11 @@ def modified_tbn_revenue(date_price, n):
 
         result += largest - smallest
 
-        prices.remove(smallest)
-        prices.remove(largest)
+        if result:
+            prices.remove(smallest)
+            prices.remove(largest)
+        else:
+            prices.remove(smallest)
 
         idx += 1
 
