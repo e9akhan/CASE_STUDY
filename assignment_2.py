@@ -41,12 +41,11 @@ def modified_tbn_revenue(date_price, n):
     while idx < n:
         max_list, min_list = [], []
         maximum, diff = 0, 0
-        smallest, largest= 0, 0
+        smallest, largest = 0, 0
         for i in range(2, len(prices)):
-            min_list.append(sorted(prices)[0])
+            min_list.append(sorted(prices[:i])[0])
             max_list.append(prices[i])
 
-        
         for maximum, minimum in zip(max_list, min_list):
             val = maximum - minimum
             diff = largest - smallest
@@ -60,7 +59,6 @@ def modified_tbn_revenue(date_price, n):
         prices.remove(largest)
 
         idx += 1
-
 
     return result
 
