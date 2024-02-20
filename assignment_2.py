@@ -34,32 +34,35 @@ def modified_tbn_revenue(date_price, n):
     Modified TBn revenue.
     """
 
-    max_list, min_list = [], []
     maximum = 0
     prices = [float(entry[1]) for entry in date_price]
-    start = 2
+    idx, result = 0, 0
 
-    while len(max_list) < n:
-        maximum, idx = 0, 0
-        for i in range(start, len(prices)):
-            price = prices[i]
-            if price > maximum and price not in max_list:
-                maximum = price
-                idx = i
+    while idx < n:
+        max_list, min_list = [], []
+        maximum, diff = 0, 0
+        smallest, largest= 0, 0
+        for i in range(2, len(prices)):
+            min_list.append(sorted(prices)[0])
+            max_list.append(prices[i])
 
-        sort_price = sorted(prices[:idx])
+        
+        for maximum, minimum in zip(max_list, min_list):
+            val = maximum - minimum
+            diff = largest - smallest
 
-        if maximum > float(sort_price[0]):
-            for price in sort_price:
-                if price not in min_list:
-                    max_list.append(maximum)
-                    min_list.append(price)
-                    print(idx)
-                    break
-        else:
-            start += 1
+            if diff < val:
+                largest, smallest = maximum, minimum
 
-    return sum(max_list) - sum(min_list) if max_list and min_list else 0
+        result += largest - smallest
+
+        prices.remove(smallest)
+        prices.remove(largest)
+
+        idx += 1
+
+
+    return result
 
 
 def create_csv_file(data, n, key):
